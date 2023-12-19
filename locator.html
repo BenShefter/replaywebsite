@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Locator</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <style>
+        body {
+            background-color: #ffff;
+        }
+ 
+        .centered-content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        body {
+            font-family: 'Nunito', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .header {
+        background-color: #fff; /* White background */
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #228c16; /* Green text color */
+        }
+
+
+        .nav_items {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+
+        .nav_link {
+            text-decoration: none;
+            color: inherit;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+
+        .nav_link:hover {
+            color: #228c16; /* Darker green on hover */
+        }
+
+
+        .button {
+            background-color: #228c16; /* Green button background */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+
+        header {
+            background-color: #ffff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        label, input {
+            margin: 30px 0;
+            padding: 5px;
+        }
+
+
+        button {
+            margin: 20px 0;
+            padding: 5px;
+        }
+
+
+        #nonProfitsList {
+            text-align: center;
+            color: black;
+        }
+
+
+        #zipCode {
+            text-align: center;
+        }
+
+
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+
+        .nav_logo img {
+            width: 50px;
+            height: auto;
+        }
+    </style>
+
+
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="home.html" class="nav_logo"><img src="C:\Users\bshefter25\Downloads\IMG-5314-removebg-preview.png" alt="Your Logo"></a>
+            <ul class="nav_items">
+                <li class="nav_item">
+                    <a href="ourstory.html" class="nav_link">Our Story</a>
+                    <a href="locator.html" class="nav_link">NonProfit Locator</a>
+                    <a href="contact.html" class="nav_link">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <form id="donationForm">
+            <label for="zipCode">Zip Code</label>
+            <input type="text" id="zipCode" required placeholder="Zip Code">
+        </form>
+        <div id="nonProfitsList"></div>
+        <!-- Google Maps Container -->
+        <div id="map"></div>
+    </div>
+
+
+    <script>
+        const zipCodeInput = document.getElementById('zipCode');
+        const donationForm = document.getElementById('donationForm');
+        const nonProfits = [
+            { name: 'Greenwich YMCA', latitude: 41.0321, longitude: -73.6250 },
+            { name: 'Fairfield County Sports Commission', latitude: 41.1357, longitude: -73.4241 },
+            { name: 'Stamford Youth Foundation', latitude: 41.0288, longitude: -73.5241 },
+            { name: 'Special Olympics Connecticut', latitude: 41.3543, longitude: -72.8924 },
+            { name: 'World Invasion Sport Academy', latitude: 41.1906, longitude: -73.1387 },
+        ];
+
+
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 41.0262, lng: -73.6282 },
+                zoom: 15
+            });
+
+
+            nonProfits.forEach(nonProfit => {
+                var marker = new google.maps.Marker({
+                    position: { lat: nonProfit.latitude, lng: nonProfit.longitude },
+                    map: map,
+                    title: nonProfit.name
+                });
+            });
+        }
+
+
+        donationForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            findNonProfits();
+        });
+
+
+        function findNonProfits() {
+            const zipCode = zipCodeInput.value;
+
+
+            const nonProfitsList = document.getElementById('nonProfitsList');
+            nonProfitsList.innerHTML = '';
+
+
+            if (nonProfits.length > 0) {
+                const ul = document.createElement('ul');
+                nonProfits.forEach(nonProfit => {
+                    const li = document.createElement('li');
+                    li.textContent = nonProfit.name;
+                    ul.appendChild(li);
+                });
+                nonProfitsList.appendChild(ul);
+            } else {
+                nonProfitsList.textContent = 'No non-profits found in your area.';
+            }
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJGguJhUSiLMfDKk6yyp5XDy3rqF6PeYM&callback=initMap" async defer></script>
+   
+</body>
+</html>

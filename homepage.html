@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REPLAY</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+</head>
+
+
+<style>
+    /* Add custom styles for the logo */
+    .nav_logo img {
+        width: 50px; /* Adjust the width as needed */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+    }
+
+
+    .header {
+        background-color: #fff; /* White background */
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #228c16; /* Green text color */
+    }
+
+
+    .nav_items {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+
+    .nav_link {
+        text-decoration: none;
+        color: inherit;
+        margin: 0 15px;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+
+    .nav_link:hover {
+        color: #228c16; /* Darker green on hover */
+    }
+
+
+    .button {
+        background-color: #228c16; /* Green button background */
+        color: #fff; /* White text color */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+</style>
+
+
+<body>
+<header class="header">
+    <nav class="nav">
+        <a href="home.html" class="nav_logo"><img src="C:\Users\bshefter25\Downloads\IMG-5314-removebg-preview.png" alt="Your Logo"></a>
+        <ul class="nav_items">
+            <li class="nav_item">
+                <a href="ourstory.html" class="nav_link">Our Story</a>
+                <a href="locator.html" class="nav_link">NonProfit Locator</a>
+                <a href="contact.html" class="nav_link">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+    <section class="home">
+      <div class="form_container">
+        <i class="uil uil-times form_close"></i>
+        <div class="form login_form">
+          <form action="#">
+            <h2>Login</h2>
+
+
+            <div class="input_box">
+              <input type="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Enter your password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+
+
+            <div class="option_field">
+              <span class="checkbox">
+                <input type="checkbox" id="check" />
+                <label for="check">Remember me</label>
+              </span>
+              <a href="#" class="forgot_pw">Forgot password?</a>
+            </div>
+
+
+            <button class="button">Login Now</button>
+
+
+            <div class="login_signup">Don't have an account? <a href="#" id="signup">Signup</a></div>
+          </form>
+        </div>
+
+
+        <div class="form signup_form">
+          <form action="#">
+            <h2>Signup</h2>
+
+
+            <div class="input_box">
+              <input type="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Create password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Confirm password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+
+
+            <button class="button">Signup Now</button>
+
+
+            <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
